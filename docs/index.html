@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Doodle — one prompt a day</title>
+<meta name="description" content="One drawing prompt a day, the drawing kept, a streak that counts only days actually drawn.">
+<meta name="theme-color" content="#1b1a17">
+<style>
+  :root{--bg:#fbf9f4;--panel:#fff;--ink:#1b1a17;--muted:#6d675c;--line:#e2ddd1;--accent:#c0563a}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans",sans-serif}
+  main{max-width:740px;margin:0 auto;padding:50px 20px 64px}
+  h1{font-size:33px;line-height:1.15;letter-spacing:-.02em;margin:0 0 10px}
+  .lede{font-size:18px;color:var(--muted);margin:0 0 26px}
+  .cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:12px 20px;border-radius:9px}
+  .status{margin:26px 0;padding:14px 16px;border:1px solid var(--line);border-left:4px solid var(--accent);border-radius:9px;background:var(--panel);font-size:14px}
+  .status b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:4px}
+  h2{font-size:17px;margin:30px 0 8px}
+  ul{padding-left:20px}li{margin:4px 0}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:#f0ece2;padding:1px 5px;border-radius:4px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin-top:8px}
+  th,td{text-align:left;border-bottom:1px solid var(--line);padding:7px 8px;vertical-align:top}
+  th{color:var(--muted);font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .demo{margin:22px 0;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+  .demo .p{font-family:Georgia,"Noto Serif",serif;font-size:20px}
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+  a{color:var(--accent)}
+</style></head>
+<body><main>
+  <h1>Daily Doodle</h1>
+  <p class="lede">One drawing prompt a day. The drawing is kept; the streak counts only the days you actually drew.</p>
+  <a class="cta" href="play/index.html">Open Daily Doodle</a>
+
+  <div class="demo">
+    <div class="p">“a bridge that could not work”</div>
+    <div style="color:#6d675c;font-size:13px;margin-top:6px">today's prompt — the same for everyone on a given date, derived rather than stored</div>
+  </div>
+
+  <div class="status">
+    <b>Status</b>
+    Built and working: a prompt a day derived from the date; a drawing pad; one doodle per date, with a second <em>refused</em> unless you confirm the replacement; yesterday's one tap away; a streak that counts consecutive days actually drawn; a share card with the prompt and the drawing; and an export.
+    <br><b>Release</b>: Windows EXE, Android APK and Linux binary, built from this source in CI — <a href="https://github.com/drsamonline/app-daily-doodle/releases/tag/app-latest">app-latest</a>.
+    <br><b>Not built</b>: a global reveal, an account, or any server to reveal anything on. There is no gallery and no ranking, because the spec forbids ranking the drawings.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li>Gives one prompt a day, the same for every date and derived from it.</li>
+    <li>Keeps the drawing as strokes, on the device.</li>
+    <li>Refuses a second doodle on the same date until you confirm the replacement.</li>
+    <li>Counts a streak of consecutive days <em>actually drawn</em> — a missed day is a gap.</li>
+    <li>Makes a share card with the prompt and the drawing.</li>
+  </ul>
+
+  <h2>What it will not do</h2>
+  <ul>
+    <li><strong>Rank the drawings.</strong> No score, no vote, no gallery order.</li>
+    <li><strong>Fill a gap with the nearest drawing.</strong> A gap is a gap.</li>
+    <li><strong>Keep two doodles for one date</strong> without you saying so.</li>
+    <li><strong>Start an empty book over a broken one.</strong> That would look like a lost streak.</li>
+    <li><strong>Use the internet.</strong> No <code>fetch</code>, no endpoint; CSP <code>connect-src 'none'</code>.</li>
+  </ul>
+
+  <h2>When things go wrong</h2>
+  <table>
+    <tr><th>Case</th><th>What happens</th></tr>
+    <tr><td>Bad input</td><td>A doodle with no strokes is refused, with or without a replacement; a bad date is refused.</td></tr>
+    <tr><td>No network</td><td>Nothing changes; the drawings are on the device.</td></tr>
+    <tr><td>Storage full or unavailable</td><td><strong>NOT SAVED</strong>, and the drawing on screen is unchanged.</td></tr>
+    <tr><td>Corrupt saved state</td><td>Reported and offered for export; never replaced with an empty book.</td></tr>
+  </table>
+
+  <h2>How to run it</h2>
+  <ul>
+    <li><strong>Here</strong>: <a href="play/index.html">play/index.html</a>, or install it from your browser's menu.</li>
+    <li><strong>Offline file</strong>: open <code>docs/play/index.html</code> straight from disk.</li>
+    <li><strong>Tests</strong>: <code>node tests/self-tests.js</code>.</li>
+  </ul>
+
+  <footer>PolyForm Noncommercial 1.0.0 · (c) 2026 Dr Sohil Momin · <a href="https://github.com/drsamonline/app-daily-doodle">source</a></footer>
+</main></body></html>

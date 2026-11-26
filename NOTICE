@@ -1,0 +1,35 @@
+NOTICE
+======
+
+Daily Doodle — https://github.com/drsamonline/app-daily-doodle
+Copyright 2026 Dr Sohil Momin. Licensed under PolyForm Noncommercial 1.0.0 (see LICENSE).
+
+Third-party components
+----------------------
+
+None. Daily Doodle has no third-party dependency and no CDN.
+
+Vendored from this project's own kits (same licence, same author), copied verbatim on 26/11/2026:
+
+- web-kit 0.1.0 — docs/play/web-kit.js — the offline shell, storage helpers and PWA registration
+- export-kit 1.0.0 — docs/play/export-kit.js — Blob download, used for the book export
+
+Neither kit is modified. Neither makes a network request.
+
+No ranking
+----------
+
+There is no score, vote, rating, rank or gallery order in this app, and the share card carries none. The
+spec forbids ranking the drawings and the engine has no shape for it.
+
+A doodle is a list of strokes
+------------------------------
+
+The drawing is stored as strokes (arrays of points), not as an image. That keeps a book of doodles small,
+and it means the "drawing" is reproducible rather than a picture of a drawing.
+
+No global reveal
+----------------
+
+There is no server, so there is no global reveal and no account. The prompt is derived from the date, so
+every copy of the app shows the same prompt on the same day without talking to anything.
